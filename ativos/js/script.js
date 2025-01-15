@@ -161,3 +161,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+    let lastScrollTop = 0; // Variável para armazenar a posição anterior do scroll
+    const header = document.querySelector('.header'); // Seleciona o elemento do cabeçalho
+
+    window.addEventListener('scroll', function() {
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop; // Obtém a posição atual do scroll
+
+        if (currentScroll > lastScrollTop) {
+            // Rolando para baixo
+            header.classList.add('hidden'); // Adiciona a classe "hidden" para esconder o cabeçalho
+        } else {
+            // Rolando para cima
+            header.classList.remove('hidden'); // Remove a classe "hidden" para mostrar o cabeçalho
+        }
+
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Atualiza a posição anterior do scroll
+    });
